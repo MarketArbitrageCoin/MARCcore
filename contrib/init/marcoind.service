@@ -1,0 +1,26 @@
+[Unit]
+Description=Marcoin's distributed currency daemon
+After=network.target
+
+[Service]
+User=marcoin
+Group=marcoin
+
+Type=forking
+PIDFile=/var/lib/marcoind/marcoind.pid
+
+ExecStart=/usr/bin/marcoind -daemon -pid=/var/lib/marcoind/marcoind.pid \
+          -conf=/etc/marcoin/marcoin.conf -datadir=/var/lib/marcoind
+
+ExecStop=-/usr/bin/marcoin-cli -conf=/etc/marcoin/marcoin.conf \
+         -datadir=/var/lib/marcoind stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target
