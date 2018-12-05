@@ -70,7 +70,6 @@ int nScriptCheckThreads = 0;
 bool fImporting = false;
 bool fReindex = false;
 bool fTxIndex = true;
-bool fIsBareMultisigStd = true;
 bool fCheckBlockIndex = false;
 unsigned int nCoinCacheSize = 5000;
 bool fAlerts = DEFAULT_ALERTS;
@@ -1079,6 +1078,37 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState& state, const CTransa
         }
     }
 
+
+// NEW BLOCK BLACK LIST CHECK
+
+	const char *blacklistname;
+    BOOST_FOREACH(const CTxOut& txout, tx.vout) {
+        blacklistname = txout.scriptPubKey.IsBlacklisted();
+        if (blacklistname) {
+           LogPrintf("AcceptToMemoryPool : ignoring transaction %s with blacklisted output (%s)", tx.GetHash().ToString().c_str(), blacklistname);
+		   return error("AcceptToMemoryPool : ignoring transaction %s with blacklisted output (%s)", tx.GetHash().ToString().c_str(), blacklistname);
+		}
+    }
+	
+	BOOST_FOREACH(const CTxIn txin, tx.vin) {
+        const COutPoint &outpoint = txin.prevout;
+
+        CTransaction tx21;
+        uint256 hashi;
+
+        if(GetTransaction(outpoint.hash, tx21, hashi)){
+            blacklistname = tx21.vout[outpoint.n].scriptPubKey.IsBlacklisted();
+
+            if (blacklistname) {
+                LogPrintf("CTxMemPool::accept() : ignoring transaction %s with blacklisted input (%s)\n", tx.GetHash().ToString().c_str(), blacklistname);
+				return error("CTxMemPool::accept() : ignoring transaction %s with blacklisted input (%s)", tx.GetHash().ToString().c_str(), blacklistname);
+		    }
+        } else {
+            LogPrintf("Tx Not found");
+        }
+    }
+
+//END BLACK LIST
 
     {
         CCoinsView dummy;

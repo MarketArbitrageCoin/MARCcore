@@ -53,12 +53,13 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (0, uint256("0x0000043b8be3fff987f6b27edf365ecd65adc162da80a0efe66e0d5048a02f97"));
+    (0, uint256("0x0000043b8be3fff987f6b27edf365ecd65adc162da80a0efe66e0d5048a02f97"))
+    (64799, uint256("0x3da4d8cd90b4f2ab367627ec63bcd6638a85a5147db6358d3dcad7c28980b1aa"));
 
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1536844393, // * UNIX timestamp of last checkpoint block
+    1544030166, // * UNIX timestamp of last checkpoint block
     0,          // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     2000        // * estimated number of transactions per day after checkpoint
@@ -148,17 +149,17 @@ public:
 
         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
 
-        fMiningRequiresPeers = true;
+        fMiningRequiresPeers = true; 
         fAllowMinDifficultyBlocks = false;
         fDefaultConsistencyChecks = false;
-        fRequireStandard = true;
+        fRequireStandard = true; 
         fMineBlocksOnDemand = false;
-        fSkipProofOfWorkCheck = false;
+        fSkipProofOfWorkCheck = false; 
         fTestnetToBeDeprecatedFieldRPC = false;
-        fHeadersFirstSyncingActive = false;
+        fHeadersFirstSyncingActive = false; 
 
         nPoolMaxTransactions = 3;
-        strSporkKey = "042c3e1870374dc0b2ac7c417d8ce71899fb829c2fe10cead11f109bb42cd4ca6d4803af69c294b25fe0030fc18255c34ed5ad692ba34a52a182ff5f7d7e1b7ab2";
+        strSporkKey = "0438a0bea56c19e62fec60b0fd7944b8a5e49bf47a237ff6d2b3f1a7bf5a8d1f3bf016ba9432c8b3641f71be3947bf662313e07272e1715546818165088a1add9b";
         strMasternodePoolDummyAddress = "MLEYML1mCq9u5GFM6rE44nD71vwrYvequm";
         nStartMasternodePayments = genesis.nTime + 86400; // 24 hours after genesis creation
 
