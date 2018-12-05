@@ -287,3 +287,4 @@ std::string CScript::ToString() const
     }
     return str;
 }
+
