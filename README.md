@@ -20,7 +20,7 @@ Cloning the repository and compiling (use any user with the sudo group):
 
     cd
     git clone https://github.com/MarketArbitrageCoin/MARCcore.git
-    cd MarketArbitrageCoin
+    cd MARCcore
     ./autogen.sh
     ./configure
     sudo make install
