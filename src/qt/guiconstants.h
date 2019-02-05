@@ -22,7 +22,7 @@ static const bool DEFAULT_SPLASHSCREEN = true;
 #define STYLE_INVALID "background:#FF8080"
 
 /* Transaction list -- unconfirmed transaction */
-#define COLOR_UNCONFIRMED QColor(255, 170, 15)
+#define COLOR_UNCONFIRMED QColor(72, 118, 255)
 /* Transaction list -- negative amount */
 #define COLOR_NEGATIVE QColor(255, 0, 0)
 /* Transaction list -- bare address (without label) */
@@ -38,7 +38,7 @@ static const bool DEFAULT_SPLASHSCREEN = true;
 /* Transaction list -- TX status decoration - orphan (Light Gray #D3D3D3) */
 #define COLOR_ORPHAN QColor(211, 211, 211)
 /* Transaction list -- TX status decoration - stake (Green #8A2BE2) */
-#define COLOR_STAKE QColor(15,127,18)
+#define COLOR_STAKE QColor(1,88,208)
 
 /* Tooltips longer than this (in characters) are converted into rich text,
    so that they can be word-wrapped.

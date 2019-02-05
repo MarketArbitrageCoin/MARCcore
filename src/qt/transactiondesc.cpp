@@ -255,6 +255,7 @@ QString TransactionDesc::toHTML(CWallet* wallet, CWalletTx& wtx, TransactionReco
 
     strHTML += "<b>" + tr("Transaction ID") + ":</b> " + rec->getTxID() + "<br>";
     strHTML += "<b>" + tr("Output index") + ":</b> " + QString::number(rec->getOutputIndex()) + "<br>";
+    strHTML += "<b>" + tr("Block Explorer link") + ":</b> " + "<a href=https:/" + "/explorer.marcoin.cc/tx/" + rec->getTxID() + ">" + "https:/" + "/explorer.marcoin.cc/tx/" + rec->getTxID() + "</a><br>";
 
     // Message from normal marcoin:URI (marcoin:XyZ...?message=example)
     foreach (const PAIRTYPE(string, string) & r, wtx.vOrderForm)
