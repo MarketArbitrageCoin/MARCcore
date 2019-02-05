@@ -89,7 +89,6 @@ int64_t nReserveBalance = 0;
  * so it's still 10 times lower comparing to bitcoin.
  */
 CFeeRate minRelayTxFee = CFeeRate(10000);
-
 CTxMemPool mempool(::minRelayTxFee);
 
 struct COrphanTx {
@@ -3538,6 +3537,7 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
     }
 
     int nHeight = pindex->nHeight;
+
 if (block.IsProofOfStake()) {
         LOCK(cs_main);
 
@@ -3563,7 +3563,7 @@ if (block.IsProofOfStake()) {
             CBlockIndex *last = pindexPrev;
 
             // while that block is not on the main chain
-            while (!chainActive.Contains(last) && pindexPrev != NULL) {
+            while (last != NULL && !chainActive.Contains(last)) {
                 CBlock bl;
                 ReadBlockFromDisk(bl, last);
                 // loop through every spent input from said block
@@ -3581,7 +3581,7 @@ if (block.IsProofOfStake()) {
                 }
 
                 // go to the parent block
-                last = pindexPrev->pprev;
+                last = last->pprev;
             }
         }
     }
@@ -5908,3 +5908,4 @@ public:
         mapOrphanTransactionsByPrev.clear();
     }
 } instance_of_cmaincleanup;
+

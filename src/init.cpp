@@ -531,6 +531,8 @@ std::string LicenseInfo()
            "\n" +
            FormatParagraph(strprintf(_("Copyright (C) 2017-%i The Marcoin Core Developers"), COPYRIGHT_YEAR)) + "\n" +
            "\n" +
+           FormatParagraph(_("Discord channel link <https://discord.gg/7zZfJNH>")) + "\n" +
+           "\n" +
            FormatParagraph(_("This is experimental software.")) + "\n" +
            "\n" +
            FormatParagraph(_("Distributed under the MIT software license, see the accompanying file COPYING or <http://www.opensource.org/licenses/mit-license.php>.")) + "\n" +
