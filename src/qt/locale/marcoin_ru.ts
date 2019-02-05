@@ -1725,6 +1725,10 @@ Please check the address and try again.</source>
         <source>Pending:</source>
         <translation>В ожидании:</translation>
     </message>
+     <message>
+        <source>Locked:</source>
+        <translation>Заблокировано:</translation>
+    </message>
     <message>
         <source>Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance</source>
         <translation>Транзакции, которые ещё должны быть подтверждены и не уменьшают баланс</translation>
