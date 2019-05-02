@@ -671,7 +671,7 @@
     </message>
     <message>
         <source>Show the Marcoin Core help message to get a list with possible Marcoin command-line options</source>
-        <translation>Смотрите помощь к программе, чтобы получить документацию ко всем возможным опциям комманды Marcoin</translation>
+        <translation>Смотрите помощь к программе, чтобы получить документацию ко всем возможным опциям команды Marcoin</translation>
     </message>
     <message>
         <source>Marcoin Core client</source>
@@ -1660,7 +1660,7 @@ Please check the address and try again.</source>
     </message>
     <message>
         <source>Active command-line options that override above options:</source>
-        <translation>Активные опции коммандной строки, которые переписывают опции выше:</translation>
+        <translation>Активные опции командной строки, которые переписывают опции выше:</translation>
     </message>
     <message>
         <source>Reset all client options to default.</source>
@@ -2038,11 +2038,11 @@ Please check the address and try again.</source>
     </message>
     <message>
         <source>&amp;Console</source>
-        <translation>&amp;Коммандая строка</translation>
+        <translation>&amp;Командная строка</translation>
     </message>
     <message>
         <source>Clear console</source>
-        <translation>Очистить коммандную строку</translation>
+        <translation>Очистить командную строку</translation>
     </message>
     <message>
         <source>&amp;Network Traffic</source>
