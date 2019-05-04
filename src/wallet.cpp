@@ -960,7 +960,7 @@ CAmount CWalletTx::GetUnlockedCredit() const
         const CTxOut& txout = vout[i];
 
         if (pwallet->IsSpent(hashTx, i) || pwallet->IsLockedCoin(hashTx, i)) continue;
-        if (fMasterNode && vout[i].nValue == MASTERNODE_COLLATERAL * COIN) continue; // do not count MN-like outputs
+        if (fMasterNode && vout[i].nValue == GetMNCollateral(chainActive.Height()) * COIN) continue; // do not count MN-like outputs
 
         nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE);
         if (!MoneyRange(nCredit))
@@ -994,7 +994,7 @@ CAmount CWalletTx::GetLockedCredit() const
         }
 
         // Add masternode collaterals which are handled like locked coins
-        else if (fMasterNode && vout[i].nValue == MASTERNODE_COLLATERAL * COIN) {
+        else if (fMasterNode && vout[i].nValue == GetMNCollateral(chainActive.Height()) * COIN) {
             nCredit += pwallet->GetCredit(txout, ISMINE_SPENDABLE);
         }
 
@@ -1069,7 +1069,7 @@ CAmount CWalletTx::GetLockedWatchOnlyCredit() const
         }
 
         // Add masternode collaterals which are handled likc locked coins
-        else if (fMasterNode && vout[i].nValue == MASTERNODE_COLLATERAL * COIN) {
+        else if (fMasterNode && vout[i].nValue == GetMNCollateral(chainActive.Height()) * COIN) {
             nCredit += pwallet->GetCredit(txout, ISMINE_WATCH_ONLY);
         }
 
@@ -1463,9 +1463,9 @@ void CWallet::AvailableCoins(vector<COutput>& vCoins, bool fOnlyConfirmed, const
             for (unsigned int i = 0; i < pcoin->vout.size(); i++) {
                 bool found = false;
                 if (nCoinType == ONLY_NOT10000IFMN) {
-                    found = !(fMasterNode && pcoin->vout[i].nValue == MASTERNODE_COLLATERAL * COIN);
+                    found = !(fMasterNode && pcoin->vout[i].nValue == GetMNCollateral(chainActive.Height()) * COIN);
                 } if (nCoinType == ONLY_10000) {
-                    found = pcoin->vout[i].nValue == MASTERNODE_COLLATERAL * COIN;
+                    found = pcoin->vout[i].nValue == GetMNCollateral(chainActive.Height()) * COIN;
                 } else {
                     found = true;
                 }

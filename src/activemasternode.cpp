@@ -390,7 +390,7 @@ vector<COutput> CActiveMasternode::SelectCoinsMasternode()
 
     // Filter
     for (const COutput& out : vCoins) {
-        if (out.tx->vout[out.i].nValue == MASTERNODE_COLLATERAL * COIN)
+        if (out.tx->vout[out.i].nValue == GetMNCollateral(chainActive.Height()) * COIN)
             filteredCoins.push_back(out);
     }
     return filteredCoins;

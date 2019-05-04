@@ -23,7 +23,7 @@
 #define MASTERNODE_REMOVAL_SECONDS (130 * 60)
 #define MASTERNODE_CHECK_SECONDS 5
 
-#define MASTERNODE_COLLATERAL 1000
+
 
 using namespace std;
 
